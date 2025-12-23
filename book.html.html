@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chagall: Beyond gravity</title>
+<style>
+body {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(to top, #addb8a,#638647);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 12px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+h1 { font-size: 26px; margin-bottom: 10px; }
+p { font-size: 14px; opacity: 0.8; margin-bottom: 25px; }
+input { width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 6px; font-size: 14px; }
+button {
+    width: 100%;
+    padding: 12px;
+    background:#efece7;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover { background: #638647; }
+.ticket {
+    display: none;
+    margin-top: 20px;
+    background: #efece7;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.ticket h2 { margin-top: 0; }
+.qr { margin-top: 15px; font-size: 12px; background: #eee; padding: 10px; border-radius: 6px; }
+.info-btn {
+    margin-top: 15px;
+    background: #638647;
+    color: #fff;
+}
+.info-btn:hover { background: #4a6236; }
+.info-contact {
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Chagall: Beyond gravity</h1>
+<p>Enter your name and when you plan to visit the exhibition:</p>
+<input type="text" id="name" placeholder="Your name">
+<input type="date" id="date">
+<button onclick="generateTicket()">Book ticket</button>
+
+<div class="ticket" id="ticket">
+    <h2>Virtual Ticket</h2>
+    <p><strong>Name:</strong> <span id="tName"></span></p>
+    <p><strong>Date:</strong> <span id="tDate"></span></p>
+    <p><strong>Location:</strong> The glasshouse, NYC</p>
+    <div class="qr">QR CODE VALID FOR ENTRY</div>
+    <button class="info-btn" onclick="openInfo()">View on map</button>
+    <div class="info-contact">
+        <p>Phone: +1 234 567 890</p>
+        <p>Email: info@chagallinnewyork.com</p>
+        <p>Instagram: chagall.beyondthegravity.nyc</p>
+    </div>
+</div>
+</div>
+
+<script>
+function generateTicket() {
+    const name = document.getElementById("name").value;
+    const date = document.getElementById("date").value;
+    if (name === "" || date === "") {
+        alert("Please enter name and date");
+        return;
+    }
+    document.getElementById("tName").innerText = name;
+    document.getElementById("tDate").innerText = date;
+    document.getElementById("ticket").style.display = "block";
+}
+
+function openInfo() {
+    window.open("https://www.google.com/maps/@40.7662046,-73.9970509,3a,75y,193.02h,96.19t/data=!3m7!1e1!3m5!1sByIZPHqxamSG0dil9BQSKA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-6.193693360251302%26panoid%3DByIZPHqxamSG0dil9BQSKA%26yaw%3D193.021825040573!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D", "_blank");
+}
+</script>
+</body>
+</html>
